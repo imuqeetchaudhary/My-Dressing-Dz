@@ -21,3 +21,9 @@ exports.professionalRegisterSchema = yup.object({
     facebook: yup.string(),
     instagram: yup.string(),
 })
+
+exports.loginSchema = yup.object({
+    email: yup.string().email().required(),
+    password: yup.string().required(),
+    role: yup.string().required()
+})

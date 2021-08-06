@@ -10,12 +10,13 @@ exports.clientRegister = promise(async (req, res) => {
     if (emailExists) throw new Exceptions.EmailExist()
 
     const encryptPassword = encrypt(body.password)
+    console.log("Encrypted Psssword: ", encryptPassword)
 
     const newUser = new User({
         ...body,
         role: "client",
         userName: `${body.firstName} ${body.lastName}`,
-        password: encryptPassword.encryptedData,
+        password: encryptPassword.content,
         iv: encryptPassword.iv
     })
 
@@ -49,5 +50,36 @@ exports.professionalRegister = promise(async (req, res) => {
         message: "Successfully saved a new user",
         user: newUser
     })
+
+})
+
+exports.login = promise(async (req, res) => {
+    const body = req.body
+    const user = await User.findOne({ email: body.email, role: body.role })
+    if (!user) throw new Exceptions.CredentialsNotMatched
+
+    const decryptPassword = decrypt(user)
+    console.log("Original Password: ", decryptPassword)
+
+    if(decryptPassword == body.password) {
+        const token = await jwt.sign({
+            _id: user._id,
+            name: user.userName,
+            email: user.email,
+            role: user.role
+        }, process.env.ACCESS_TOKEN_SECRET)
+    
+        res.status(200).json({
+            token: token,
+            _id: user._id,
+            name: user.userName,
+            email: user.email,
+            role: user.role
+        })
+
+    }
+    else {
+        throw new Exceptions.CredentialsNotMatched()
+    }
 
 })

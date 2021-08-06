@@ -35,3 +35,15 @@
     instagram:
 }
 ```
+
+### to login a client & professional
+
+- user/login : post
+
+```
+{
+    email:
+    password:
+    role:
+}
+```

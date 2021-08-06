@@ -49,7 +49,11 @@ const userSchema = new schema({
     sections: [{
         type: String,
         require: true
-    }]
+    }],
+    isActive: {
+        type: Boolean,
+        default: false
+    }
 })
 
 exports.User = mongoose.model("User", userSchema)

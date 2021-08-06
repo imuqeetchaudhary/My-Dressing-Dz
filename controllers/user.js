@@ -17,7 +17,8 @@ exports.clientRegister = promise(async (req, res) => {
         role: "client",
         userName: `${body.firstName} ${body.lastName}`,
         password: encryptPassword.content,
-        iv: encryptPassword.iv
+        iv: encryptPassword.iv,
+        isActive: true
     })
 
     await newUser.save()

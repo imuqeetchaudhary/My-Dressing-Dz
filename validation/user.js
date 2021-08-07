@@ -27,3 +27,8 @@ exports.loginSchema = yup.object({
     password: yup.string().required(),
     role: yup.string().required()
 })
+
+exports.forgetPasswordSchema = yup.object({
+    email: yup.string().email().required(),
+    role: yup.string().required()
+})

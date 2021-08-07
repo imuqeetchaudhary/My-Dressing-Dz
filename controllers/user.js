@@ -1,6 +1,7 @@
 const { User } = require("../db/models/user")
 const Exceptions = require("../utils/custom-exceptions")
 const { promise } = require("../middlewares/promises")
+const { sendMail } = require("../middlewares/sendMail")
 const { encrypt, decrypt } = require("../middlewares/encrypt-decrypt")
 const jwt = require("jsonwebtoken")
 
@@ -26,6 +27,9 @@ exports.clientRegister = promise(async (req, res) => {
         message: "Successfully saved a new user",
         user: newUser
     })
+
+    const message = `Dear user ${newUser.userName}! Your login credentials for My Dressing Dz as a ${newUser.role} access are email: ${newUser.email}, password: ${newUser.password}`
+    sendMail(newUser.email, message, res)
 
 })
 
@@ -62,7 +66,7 @@ exports.login = promise(async (req, res) => {
     // const decryptPassword = decrypt(user)
     // console.log("Original Password: ", decryptPassword)
 
-    if(body.password == user.password) {
+    if (body.password == user.password) {
         const token = await jwt.sign({
             _id: user._id,
             name: user.userName,
@@ -83,5 +87,16 @@ exports.login = promise(async (req, res) => {
     }
 
 
+
+})
+
+exports.forgetPassword = promise(async (req, res) => {
+    const body = req.body
+
+    const user = await User.findOne({ email: body.email, role: body.role })
+    if (!user) throw new Exceptions.NotFound("User not found")
+
+    const message = `Dear user ${user.userName}! your password for My Dressing Dz Website as a ${body.role} access user is ${user.password}`
+    sendMail(user.email, message, res)
 
 })

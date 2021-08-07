@@ -47,8 +47,8 @@ const userSchema = new schema({
         require: true
     },
     sections: [{
-        type: String,
-        require: true
+        type: schema.Types.ObjectId,
+        ref: "Section"
     }],
     isActive: {
         type: Boolean,

@@ -1,5 +1,21 @@
 # My Dressing Dz Rest Api
 
+## Routes for Sections
+
+### To add a new section
+
+- section/add :post
+
+```
+{
+    name:
+}
+```
+
+### To get all sections
+
+- section/get-all :get
+
 ## Routes for User
 
 ### to register a new client

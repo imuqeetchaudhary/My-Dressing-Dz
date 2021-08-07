@@ -16,6 +16,22 @@
 
 - section/get-all :get
 
+## Routes for Collections
+
+### To add a new collection
+
+- collection/add :post
+
+```
+{
+    name:
+}
+```
+
+### To get all collections
+
+- collection/get-all :get
+
 ## Routes for User
 
 ### to register a new client

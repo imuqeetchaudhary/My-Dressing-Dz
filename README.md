@@ -79,3 +79,14 @@
     role:
 }
 ```
+
+### to forget password for a user
+
+-user/forget-password :post
+
+```
+{
+    name:
+    role:
+}
+```

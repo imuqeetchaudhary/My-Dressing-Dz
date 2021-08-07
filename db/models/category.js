@@ -1,11 +1,11 @@
 const mongoose = require("mongoose")
 const schema = mongoose.Schema
 
-const collectionSchema = new schema({
+const categorySchema = new schema({
     name: {
         type: String,
         require: true
     },
 })
 
-exports.Collection = mongoose.model("Collection", collectionSchema)
+exports.Category = mongoose.model("Category", categorySchema)

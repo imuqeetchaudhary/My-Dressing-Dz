@@ -1,5 +1,5 @@
 const yup = require("yup")
 
-exports.addCollectionSchema = yup.object({
+exports.addCategorySchema = yup.object({
     name: yup.string().required()
 })

@@ -16,11 +16,11 @@
 
 - section/get-all :get
 
-## Routes for Collections
+## Routes for Categories
 
-### To add a new collection
+### To add a new category
 
-- collection/add :post
+- category/add :post
 
 ```
 {
@@ -28,9 +28,9 @@
 }
 ```
 
-### To get all collections
+### To get all categories
 
-- collection/get-all :get
+- category/get-all :get
 
 ## Routes for User
 

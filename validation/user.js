@@ -20,6 +20,7 @@ exports.professionalRegisterSchema = yup.object({
     address: yup.string().required(),
     facebook: yup.string(),
     instagram: yup.string(),
+    sections: yup.string().required()
 })
 
 exports.loginSchema = yup.object({

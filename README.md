@@ -65,6 +65,7 @@
     address:
     facebook:
     instagram:
+    sections: []
 }
 ```
 

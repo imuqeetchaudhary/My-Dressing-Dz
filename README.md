@@ -92,3 +92,26 @@
     role:
 }
 ```
+
+## Routes for Articles
+
+### to add a new article
+
+- article/add :post
+
+```
+{
+    articleName:
+    articleDescription:
+    image:
+    sectionId:
+    categoryId:
+    brandName:
+    city:
+    onlineDate:
+    availableSizes:
+    totalStock:
+    indicatedPrice:
+    finalPrice:
+}
+```

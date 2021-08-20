@@ -14,3 +14,7 @@ exports.addArticleSchema = yup.object({
     indicatedPrice: yup.string().required(),
     finalPrice: yup.string().required(),
 })
+
+exports.getArticleSchema = yup.object({
+    articleId: yup.string().required()
+})

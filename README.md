@@ -115,3 +115,17 @@
     finalPrice:
 }
 ```
+
+### to get all articles
+
+- article/get-all :get
+
+### to get single article
+
+- article/get-single :post
+
+```
+{
+    articleId:
+}
+```

@@ -29,9 +29,9 @@ exports.addArticle = promise(async (req, res) => {
     const newArticle = new Article({
         ...req.body,
         storeId: req.user._id,
-        storeName: store.userName,
-        sectionName: section.name,
-        categoryName: category.name,
+        storeName: store.userName.toLowerCase(),
+        sectionName: section.name.toLowerCase(),
+        categoryName: category.name.toLowerCase(),
         images: images,
         availableSizes: JSON.parse(body.availableSizes)
     })
@@ -57,5 +57,18 @@ exports.getSingleArticles = promise(async (req, res) => {
 })
 
 exports.searchArticle = promise(async (req, res) => {
-    
+    const body = req.body
+
+    const article = await Article.find({
+        $or: [
+            { storeName: body.storeName },
+            { sectionName: body.sectionName },
+            { categoryName: body.categoryName },
+            { articleName: body.articleName },
+            { city: body.city }
+        ]
+    })
+    if (!article) throw new Exceptions.NotFound("No article found")
+
+    res.status(200).json({ article })
 })

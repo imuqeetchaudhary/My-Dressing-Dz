@@ -149,3 +149,17 @@
     articleId:
 }
 ```
+
+### to search article
+
+- article/search :post
+
+```
+{
+    storeName:
+    sectionName:
+    categoryName:
+    articleName:
+    city:
+}
+```

@@ -18,3 +18,11 @@ exports.addArticleSchema = yup.object({
 exports.getArticleSchema = yup.object({
     articleId: yup.string().required()
 })
+
+exports.searchArticleSchema = yup.object({
+    storeName: yup.string(),
+    sectionName: yup.string(),
+    categoryName: yup.string(),
+    articleName: yup.string(),
+    city: yup.string()
+})

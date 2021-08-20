@@ -21,15 +21,15 @@ function getMailOptions() {
     }
 }
 
-function sendMail(email, message, res) {
+function sendMail(email, message) {
     const mailOpts = getMailOptions();
 
     return transporter.sendMail({ ...mailOpts, to: email, text: message }, (err, data) => {
         if (err) {
-            res.status(400).json(`${err}`)
+            console.log(`Error: ${err}`)
         }
         else {
-            res.status(200).json({ message: "Email Sent" })
+            console.log("Email Sent")
         }
 
     });

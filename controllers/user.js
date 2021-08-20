@@ -57,6 +57,9 @@ exports.professionalRegister = promise(async (req, res) => {
         user: newUser
     })
 
+    const message = `Dear user ${newUser.userName}! Your login credentials for My Dressing Dz as a ${newUser.role} access are email: ${newUser.email}, password: ${newUser.password}`
+    sendMail(newUser.email, message)
+
 })
 
 exports.login = promise(async (req, res) => {
@@ -98,6 +101,9 @@ exports.forgetPassword = promise(async (req, res) => {
     if (!user) throw new Exceptions.NotFound("User not found")
 
     const message = `Dear user ${user.userName}! your password for My Dressing Dz Website as a ${body.role} access user is ${user.password}`
-    sendMail(user.email, message, res)
+    sendMail(user.email, message)
+
+    res.status(200).json({ message: "Password send to you email." })
+
 
 })

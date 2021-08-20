@@ -4,7 +4,7 @@ const DEV_MONGO_URI = "mongodb://localhost:27017/My-Dressing-Dz";
 const PROD_MONGO_URI = "mongodb+srv://muqeet_chaudhary:Abdul6890060@cluster0.bqu75.mongodb.net/My-Dressing-Dz";
 
 const MONGO_URI =
-    process.env.NODE_ENV === "production" ? PROD_MONGO_URI : DEV_MONGO_URI;
+    process.env.NODE_ENV === "production" ? PROD_MONGO_URI : PROD_MONGO_URI;
 
 module.exports = async function () {
     try {

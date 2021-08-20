@@ -29,7 +29,7 @@ exports.clientRegister = promise(async (req, res) => {
     })
 
     const message = `Dear user ${newUser.userName}! Your login credentials for My Dressing Dz as a ${newUser.role} access are email: ${newUser.email}, password: ${newUser.password}`
-    sendMail(newUser.email, message, res)
+    sendMail(newUser.email, message)
 
 })
 
@@ -46,6 +46,7 @@ exports.professionalRegister = promise(async (req, res) => {
         role: "professional",
         userName: `${body.firstName} ${body.lastName}`,
         shopPhoto: req.file.filename,
+        sections: JSON.parse(body.sections)
         // password: encryptPassword.encryptedData,
         // iv: encryptPassword.iv,
     })

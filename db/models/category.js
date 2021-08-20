@@ -6,6 +6,10 @@ const categorySchema = new schema({
         type: String,
         require: true
     },
+    sizes: [{
+        type: String,
+        require: true
+    }]
 })
 
 exports.Category = mongoose.model("Category", categorySchema)

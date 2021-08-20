@@ -6,6 +6,9 @@ const articleSchema = new schema({
         type: schema.Types.ObjectId,
         ref: "User"
     },
+    storeName: {
+        type: String,
+    },
     articleName: {
         type: String,
         require: true
@@ -23,10 +26,16 @@ const articleSchema = new schema({
         ref: "Section",
         require: true
     },
+    sectionName: {
+        type: String,
+    },
     categoryId: {
         type: schema.Types.ObjectId,
         ref: "Category",
         require: true
+    },
+    categoryName: {
+        type: String,
     },
     brandName: {
         type: String,

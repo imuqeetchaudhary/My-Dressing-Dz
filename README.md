@@ -33,6 +33,16 @@
 
 - category/get-all :get
 
+### To get single categorie
+
+- category/get-single :post
+
+```
+{
+    categoryId:
+}
+```
+
 ## Routes for User
 
 ### to register a new client

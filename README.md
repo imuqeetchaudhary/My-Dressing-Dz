@@ -16,6 +16,16 @@
 
 - section/get-all :get
 
+### To get single section
+
+- section/get-single :post
+
+```
+{
+    sectionId:
+}
+```
+
 ## Routes for Categories
 
 ### To add a new category
@@ -33,7 +43,7 @@
 
 - category/get-all :get
 
-### To get single categorie
+### To get single category
 
 - category/get-single :post
 

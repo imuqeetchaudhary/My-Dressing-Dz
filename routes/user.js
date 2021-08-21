@@ -10,7 +10,8 @@ const {
     loginSchema,
     forgetPasswordSchema,
     getSingleStoreSchema,
-    getArticleForSpecificSectionOfStoreSchema
+    getArticleForSpecificSectionOfStoreSchema,
+    getArticleForSpecificCategoryOfStoreSchema
 } = require("../validation/user")
 
 router
@@ -27,6 +28,11 @@ router
         "/get-articles-for-specific-section",
         validation(getArticleForSpecificSectionOfStoreSchema),
         user.getArticlesForSpecificSectionOfASingleStore
+    )
+    .post(
+        "/get-articles-for-specific-category",
+        validation(getArticleForSpecificCategoryOfStoreSchema),
+        user.getArticlesForSpecificCategoryOfASingleStore
     )
 
 module.exports = router

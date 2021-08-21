@@ -160,3 +160,12 @@ exports.getArticlesForSpecificSectionOfASingleStore = promise(async (req, res) =
 
     res.status(200).json({ articles })
 })
+
+exports.getArticlesForSpecificCategoryOfASingleStore = promise(async (req, res) => {
+    const body = req.body
+
+    const articles = await Article.find({ storeId: body.storeId, sectionId: body.sectionId, categoryId: body.categoryId })
+    if (!articles) throw new Exceptions.NotFound("No article found")
+
+    res.status(200).json({ articles })
+})

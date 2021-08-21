@@ -202,6 +202,20 @@ Client's Route
 }
 ```
 
+### to get all articles based on category for a single store
+
+Client's Route
+
+- store/get-articles-for-specific-category :post
+
+```
+{
+    storeId:
+    sectionId:
+    categoryId:
+}
+```
+
 ## Routes for Articles
 
 ### to add a new article

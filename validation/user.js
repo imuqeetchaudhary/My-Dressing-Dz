@@ -10,17 +10,17 @@ exports.clientRegisterSchema = yup.object({
 });
 
 exports.professionalRegisterSchema = yup.object({
-    firstName: yup.string(),
-    lastName: yup.string(),
-    shopName: yup.string(),
-    image: yup.string(),
-    email: yup.string().email(),
-    password: yup.string().min(5).max(10),
-    number: yup.number(),
-    address: yup.string(),
-    facebook: yup.string(),
-    instagram: yup.string(),
-    sections: yup.string()
+  firstName: yup.string(),
+  lastName: yup.string(),
+  shopName: yup.string(),
+  image: yup.string(),
+  email: yup.string().email(),
+  password: yup.string().min(5).max(10),
+  number: yup.number(),
+  address: yup.string(),
+  facebook: yup.string(),
+  instagram: yup.string(),
+  sections: yup.string()
 })
 
 exports.loginSchema = yup.object({
@@ -54,4 +54,10 @@ exports.getSingleStoreSchema = yup.object({
 exports.getArticleForSpecificSectionOfStoreSchema = yup.object({
   storeId: yup.string().required(),
   sectionId: yup.string().required(),
+});
+
+exports.getArticleForSpecificCategoryOfStoreSchema = yup.object({
+  storeId: yup.string().required(),
+  sectionId: yup.string().required(),
+  categoryId: yup.string().required(),
 });

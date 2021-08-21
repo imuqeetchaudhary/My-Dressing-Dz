@@ -109,6 +109,12 @@ exports.forgetPassword = promise(async (req, res) => {
 
 })
 
+exports.getProfile = promise(async (req, res) => {
+    const user = await User.findById(req.user._id)
+    if (!user) throw new Exceptions.NotFound("User not found")
+    res.status(200).json(user)
+})
+
 exports.getAllStores = promise(async (req, res) => {
     const stores = await User.find({ role: "professional" })
     if (!stores) throw new Exceptions.NotFound("No stores found")

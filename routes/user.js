@@ -18,6 +18,7 @@ router
     .post("/professional-register", validation(professionalRegisterSchema), upload.single("image"), user.professionalRegister)
     .post("/login", validation(loginSchema), user.login)
     .post("/forget-password", validation(forgetPasswordSchema), user.forgetPassword)
+    .get("/profile", authentication, user.getProfile)
     .get("/get-all", user.getAllStores)
     .post("/get-single", validation(getSingleStoreSchema), user.getSingleStore)
     .post("/get-articles", validation(getSingleStoreSchema), user.getArticlesForASingleStore)

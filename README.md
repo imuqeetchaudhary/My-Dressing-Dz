@@ -131,6 +131,12 @@ Client's & Professional's Route
 }
 ```
 
+### to get user profile
+
+Client's & Professional's Route
+
+- user/profile :get
+
 ## Routes for Stores
 
 ### to get all stores

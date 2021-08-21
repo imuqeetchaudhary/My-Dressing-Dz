@@ -1,13 +1,20 @@
 const { OrderHistory } = require("../db/models/orderhistory")
+const { Article } = require("../db/models/article")
 const Exceptions = require("../utils/custom-exceptions")
 const { promise } = require("../middlewares/promises")
 
 exports.addOrderHistory = promise(async (req, res) => {
     const body = req.body
 
+    const article = await Article.findById(body.articleId)
+    if (!article) throw new Exceptions.NotFound("No article found")
+
+    const totalPrice = (body.quantity * article.finalPrice)
+
     const newOrderHistory = new OrderHistory({
         ...body,
-        clientId: req.user._id
+        clientId: req.user._id,
+        price: totalPrice
     })
     await newOrderHistory.save()
     res.status(200).json({ message: "Successfully added order history", newOrderHistory })

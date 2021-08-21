@@ -5,7 +5,6 @@ exports.addOrderHistorySchema = yup.object({
     articleId: yup.string().required(),
     size: yup.string().required(),
     quantity: yup.number().required(),
-    price: yup.number().required(),
     deliveryOption: yup.string().required(),
     deliveryAddress: yup.string().required(),
     deliveryCity: yup.string().required(),

@@ -64,7 +64,7 @@ exports.getSingleArticle = promise(async (req, res) => {
     if (likedArticle) { isLiked = true }
     else { isLiked = false }
 
-    const article = await Article.findById(body.articleId).populate("sectionId").populate("categoryId")
+    const article = await Article.findById(body.articleId).populate("sectionId").populate("categoryId").populate("storeId")
     if (!article) throw new Exceptions.NotFound("No article found")
 
     res.status(200).json({ isLiked, article })

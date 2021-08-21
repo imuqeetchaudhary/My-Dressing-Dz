@@ -19,5 +19,6 @@ router
     .post("/forget-password", validation(forgetPasswordSchema), user.forgetPassword)
     .get("/get-all", user.getAllStores)
     .post("/get-single", validation(getSingleStoreSchema), user.getSingleStore)
+    .post("/get-articles", validation(getSingleStoreSchema), user.getArticlesForASingleStore)
 
 module.exports = router

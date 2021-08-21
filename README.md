@@ -57,6 +57,8 @@
 
 ### to register a new client
 
+Client's Route
+
 - user/client-register : post
 
 ```
@@ -71,6 +73,8 @@
 ```
 
 ### to register a new professional
+
+Professional's Route
 
 - user/professional-register : post
 
@@ -92,6 +96,8 @@
 
 ### to login a client & professional
 
+Client's & Professional's Route
+
 - user/login : post
 
 ```
@@ -103,6 +109,8 @@
 ```
 
 ### to forget password for a user
+
+Client's & Professional's Route
 
 -user/forget-password :post
 
@@ -117,11 +125,27 @@
 
 ### to get all stores
 
+Client's Route
+
 - store/get-all :get
 
 ### to get a single store
 
+Client's Route
+
 - store/get-single :post
+
+```
+{
+    storeId:
+}
+```
+
+### to get all articles of a single store
+
+Client's Route
+
+- store/get-articles :post
 
 ```
 {
@@ -132,6 +156,8 @@
 ## Routes for Articles
 
 ### to add a new article
+
+Professional's Route
 
 - article/add :post
 
@@ -154,9 +180,13 @@
 
 ### to get all articles
 
+Client's Route
+
 - article/get-all :get
 
 ### to get single article
+
+Client's & Professional's Route
 
 - article/get-single :post
 
@@ -167,6 +197,8 @@
 ```
 
 ### to search article
+
+Client's Route
 
 - article/search :post
 

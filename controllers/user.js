@@ -1,4 +1,5 @@
 const { User } = require("../db/models/user")
+const { Article } = require("../db/models/article")
 const Exceptions = require("../utils/custom-exceptions")
 const { promise } = require("../middlewares/promises")
 const { sendMail } = require("../middlewares/sendMail")
@@ -121,4 +122,13 @@ exports.getSingleStore = promise(async (req, res) => {
     if (!store) throw new Exceptions.NotFound("No stores found")
     console.log(store)
     res.status(200).json({ store })
+})
+
+exports.getArticlesForASingleStore = promise(async (req, res) => {
+    const body = req.body
+
+    const articles = await Article.find({ storeId: body.storeId })
+    if (!articles) throw new Exceptions.NotFound("No article found")
+
+    res.status(200).json({ articles })
 })

@@ -55,13 +55,19 @@ exports.getAllArticles = promise(async (req, res) => {
     res.status(200).json({ articles })
 })
 
-exports.getSingleArticles = promise(async (req, res) => {
+exports.getSingleArticle = promise(async (req, res) => {
     const body = req.body
+    let isLiked;
+
+    const likedArticle = await LikedArticle.findOne({ userId: req.user._id, articleId: body.articleId })
+
+    if (likedArticle) { isLiked = true }
+    else { isLiked = false }
 
     const article = await Article.findById(body.articleId).populate("sectionId").populate("categoryId")
     if (!article) throw new Exceptions.NotFound("No article found")
 
-    res.status(200).json({ article })
+    res.status(200).json({ isLiked, article })
 })
 
 exports.searchArticle = promise(async (req, res) => {

@@ -13,7 +13,7 @@ const {
 router
     .post("/add", authentication, validation(addArticleSchema), upload.array("image"), article.addArticle)
     .get("/get-all", article.getAllArticles)
-    .post("/get-single", validation(getArticleSchema), article.getAllArticles)
+    .post("/get-single", authentication, validation(getArticleSchema), article.getSingleArticle)
     .post("/search", validation(searchArticleSchema), article.searchArticle)
     .delete("/delete", authentication, validation(getArticleSchema), article.deleteArticle)
     .patch("/like", authentication, validation(getArticleSchema), article.likeArticle)

@@ -113,6 +113,22 @@
 }
 ```
 
+## Routes for Stores
+
+### to get all stores
+
+- store/get-all :get
+
+### to get a single store
+
+- store/get-single :post
+
+```
+{
+    storeId:
+}
+```
+
 ## Routes for Articles
 
 ### to add a new article

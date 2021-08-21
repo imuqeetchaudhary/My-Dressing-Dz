@@ -33,3 +33,7 @@ exports.forgetPasswordSchema = yup.object({
     email: yup.string().email().required(),
     role: yup.string().required()
 })
+
+exports.getSingleStoreSchema = yup.object({
+    storeId: yup.string().required()
+})

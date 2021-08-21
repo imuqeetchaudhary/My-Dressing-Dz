@@ -5,6 +5,7 @@ const user = require("./routes/user")
 const section = require("./routes/section")
 const category = require("./routes/category")
 const article = require("./routes/article")
+const store = require("./routes/user")
 const cors = require("cors")
 
 dbConnect();
@@ -23,5 +24,6 @@ app.use("/user", user)
 app.use("/section", section)
 app.use("/category", category)
 app.use("/article", article)
+app.use("/store", store)
 
 module.exports = { app }

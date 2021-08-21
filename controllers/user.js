@@ -107,3 +107,18 @@ exports.forgetPassword = promise(async (req, res) => {
 
 
 })
+
+exports.getAllStores = promise(async (req, res) => {
+    const stores = await User.find({ role: "professional" })
+    if (!stores) throw new Exceptions.NotFound("No stores found")
+    res.status(200).json({ stores })
+})
+
+exports.getSingleStore = promise(async (req, res) => {
+    const body = req.body
+
+    const store = await User.findOne({ _id: body.storeId, role: "professional" })
+    if (!store) throw new Exceptions.NotFound("No stores found")
+    console.log(store)
+    res.status(200).json({ store })
+})

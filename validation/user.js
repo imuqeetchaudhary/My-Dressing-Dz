@@ -15,7 +15,7 @@ exports.professionalRegisterSchema = yup.object({
     shopName: yup.string(),
     image: yup.string(),
     email: yup.string().email(),
-    password: yup.string().required().min(5).max(10),
+    password: yup.string().min(5).max(10),
     number: yup.number(),
     address: yup.string(),
     facebook: yup.string(),

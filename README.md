@@ -26,7 +26,7 @@
 }
 ```
 
-### To get multipple sections using array
+### To get multiple sections using array
 
 - section/get-multiple :post
 
@@ -160,6 +160,19 @@ Client's Route
 ```
 {
     storeId:
+}
+```
+
+### to get all articles based on section for a single store
+
+Client's Route
+
+- store/get-articles-for-specific-section :post
+
+```
+{
+    storeId:
+    sectionId:
 }
 ```
 

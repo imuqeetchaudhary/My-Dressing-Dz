@@ -37,3 +37,7 @@ exports.forgetPasswordSchema = yup.object({
 exports.getSingleStoreSchema = yup.object({
     storeId: yup.string().required()
 })
+exports.getArticleForSpecificSectionOfStoreSchema = yup.object({
+    storeId: yup.string().required(),
+    sectionId: yup.string().required()
+})

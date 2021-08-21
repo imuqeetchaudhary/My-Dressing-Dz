@@ -11,10 +11,11 @@ const {
 } = require("../validation/article")
 
 router
-    .post("/add", authentication,  upload.array("image"), article.addArticle)
+    .post("/add", authentication, validation(addArticleSchema), upload.array("image"), article.addArticle)
     .get("/get-all", article.getAllArticles)
-    .get("/get-single", validation(getArticleSchema), article.getAllArticles)
+    .post("/get-single", validation(getArticleSchema), article.getAllArticles)
     .post("/search", validation(searchArticleSchema), article.searchArticle)
     .delete("/delete", authentication, validation(getArticleSchema), article.deleteArticle)
+    .patch("/like", authentication, validation(getArticleSchema), article.likeArticle)
 
 module.exports = router

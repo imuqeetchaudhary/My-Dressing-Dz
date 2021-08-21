@@ -122,7 +122,7 @@ Client's & Professional's Route
 
 Client's & Professional's Route
 
--user/forget-password :post
+- user/forget-password :post
 
 ```
 {
@@ -136,6 +136,27 @@ Client's & Professional's Route
 Client's & Professional's Route
 
 - user/profile :get
+
+### to update usr profile
+
+Client's & Professional's Route
+
+- user/update-profile :patch
+
+```
+{
+    firstName:
+    lastName:
+    shopName:
+    email:
+    password:
+    number:
+    address:
+    facebook:
+    instagram:
+    sections:
+}
+```
 
 ## Routes for Stores
 

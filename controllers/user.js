@@ -115,6 +115,20 @@ exports.getProfile = promise(async (req, res) => {
     res.status(200).json(user)
 })
 
+exports.updateProfile = promise(async (req, res) => {
+    const body = req.body
+
+    const updateUser = await User.updateOne(
+        { _id: req.user._id },
+        {
+            $set: {
+                ...body,
+            }
+        }
+    )
+    res.status(200).json({ message: "Successfully updated user profile" })
+})
+
 exports.getAllStores = promise(async (req, res) => {
     const stores = await User.find({ role: "professional" })
     if (!stores) throw new Exceptions.NotFound("No stores found")

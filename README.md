@@ -145,8 +145,7 @@ Client's & Professional's Route
 
 ```
 {
-    firstName:
-    lastName:
+    userName:
     shopName:
     email:
     password:

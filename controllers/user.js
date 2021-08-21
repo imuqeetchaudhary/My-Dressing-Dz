@@ -138,9 +138,8 @@ exports.getAllStores = promise(async (req, res) => {
 exports.getSingleStore = promise(async (req, res) => {
     const body = req.body
 
-    const store = await User.findOne({ _id: body.storeId, role: "professional" })
+    const store = await User.findOne({ _id: body.storeId, role: "professional" }).populate("sections")
     if (!store) throw new Exceptions.NotFound("No stores found")
-    console.log(store)
     res.status(200).json({ store })
 })
 

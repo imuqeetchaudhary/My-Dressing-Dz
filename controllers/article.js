@@ -12,32 +12,39 @@ exports.addArticle = promise(async (req, res) => {
     if (!store) throw new Exceptions.NotFound("Store not found")
     console.log(store.userName);
 
-    const section = await Section.findById(body.sectionId)
-    if (!section) throw new Exceptions.NotFound("Section not found")
-    console.log(section.name);
+    if (store.isActive) {
 
-    const category = await Category.findById(body.categoryId)
-    if (!category) throw new Exceptions.NotFound("Category not found")
-    console.log(category.name);
+        const section = await Section.findById(body.sectionId)
+        if (!section) throw new Exceptions.NotFound("Section not found")
+        console.log(section.name);
 
-    let images = []
+        const category = await Category.findById(body.categoryId)
+        if (!category) throw new Exceptions.NotFound("Category not found")
+        console.log(category.name);
 
-    req.files.forEach(imageUrl => {
-        images = [...images, imageUrl.filename]
-    })
+        let images = []
 
-    const newArticle = new Article({
-        ...req.body,
-        storeId: req.user._id,
-        storeName: store.userName.toLowerCase(),
-        sectionName: section.name.toLowerCase(),
-        categoryName: category.name.toLowerCase(),
-        images: images,
-        availableSizes: JSON.parse(body.availableSizes)
-    })
+        req.files.forEach(imageUrl => {
+            images = [...images, imageUrl.filename]
+        })
 
-    await newArticle.save()
-    res.status(200).json({ message: "Successfuly added article", newArticle })
+        const newArticle = new Article({
+            ...req.body,
+            storeId: req.user._id,
+            storeName: store.userName.toLowerCase(),
+            sectionName: section.name.toLowerCase(),
+            categoryName: category.name.toLowerCase(),
+            images: images,
+            availableSizes: JSON.parse(body.availableSizes)
+        })
+
+        await newArticle.save()
+        res.status(200).json({ message: "Successfuly added article", newArticle })
+    }
+    else {
+        throw new Exceptions.BadRequset("Please buy 6 months subscription in order to add product")
+    }
+
 })
 
 exports.getAllArticles = promise(async (req, res) => {

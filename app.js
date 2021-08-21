@@ -6,6 +6,7 @@ const section = require("./routes/section")
 const category = require("./routes/category")
 const article = require("./routes/article")
 const store = require("./routes/user")
+const orderhistory = require("./routes/orderhistory")
 const cors = require("cors")
 
 dbConnect();
@@ -25,5 +26,6 @@ app.use("/section", section)
 app.use("/category", category)
 app.use("/article", article)
 app.use("/store", store)
+app.use("/orderhistory", orderhistory)
 
 module.exports = { app }

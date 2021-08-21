@@ -286,3 +286,24 @@ Professional's Route
     articleId:
 }
 ```
+
+## Routes for Order History
+
+### to add a new order history
+
+Client's Route
+
+- orderhistory/add :post
+
+```
+{
+    storeId:
+    articleId:
+    size:
+    quantity:
+    price:
+    deliveryOption:
+    deliveryAddress:
+    deliveryCity:
+}
+```

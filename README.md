@@ -307,3 +307,9 @@ Client's Route
     deliveryCity:
 }
 ```
+
+### to get order histories of a specific client
+
+Client's Route
+
+- orderhistory/get-for-specific-client :get

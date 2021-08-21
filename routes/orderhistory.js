@@ -7,5 +7,6 @@ const { addOrderHistorySchema } = require("../validation/orderhistory")
 
 router
     .post("/add", authentication, validation(addOrderHistorySchema), orderhistory.addOrderHistory)
+    .get("/get-for-specific-client", authentication, orderhistory.getOrderHistoriesForSpecificClient)
 
 module.exports = router

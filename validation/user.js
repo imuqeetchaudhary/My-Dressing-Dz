@@ -10,17 +10,17 @@ exports.clientRegisterSchema = yup.object({
 })
 
 exports.professionalRegisterSchema = yup.object({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-    shopName: yup.string().required(),
-    shopPhoto: yup.string().required(),
-    email: yup.string().email().required(),
+    firstName: yup.string(),
+    lastName: yup.string(),
+    shopName: yup.string(),
+    image: yup.string(),
+    email: yup.string().email(),
     password: yup.string().required().min(5).max(10),
-    number: yup.number().required(),
-    address: yup.string().required(),
+    number: yup.number(),
+    address: yup.string(),
     facebook: yup.string(),
     instagram: yup.string(),
-    sections: yup.string().required()
+    sections: yup.string()
 })
 
 exports.loginSchema = yup.object({

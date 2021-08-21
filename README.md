@@ -234,3 +234,15 @@ Client's Route
     city:
 }
 ```
+
+### to delete an article
+
+Professional's Route
+
+- article/delete :delete
+
+```
+{
+    articleId:
+}
+```

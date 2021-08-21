@@ -8,6 +8,8 @@ const { addSectionSchema, getSectionSchema } = require("../validation/section")
 router
     .post("/add", validation(addSectionSchema), section.addSection)
     .get("/get-all", section.getAllSections)
-    .get("/get-single", validation(getSectionSchema), section.getSingleSection)
+    .post("/get-single", validation(getSectionSchema), section.getSingleSection)
+    .post("/get-multiple", section.getMultipleSectionsWithArray)
+
 
 module.exports = router

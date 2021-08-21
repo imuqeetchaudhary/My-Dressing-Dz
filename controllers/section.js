@@ -25,3 +25,12 @@ exports.getSingleSection = promise(async (req, res) => {
     if (!section) throw new Exceptions.NotFound("No section found")
     res.status(200).json({ section })
 })
+
+exports.getMultipleSectionsWithArray = promise(async (req, res) => {
+    const body = req.body
+
+    const sections = await Section.find({ _id: { $in: body.sectionId } })
+    if (!sections) throw new Exceptions.NotFound("No section found")
+
+    res.status(200).json(sections)
+})

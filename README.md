@@ -26,6 +26,16 @@
 }
 ```
 
+### To get multipple sections using array
+
+- section/get-multiple :post
+
+```
+{
+    sectionId:
+}
+```
+
 ## Routes for Categories
 
 ### To add a new category

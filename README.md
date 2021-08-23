@@ -346,6 +346,8 @@ Client's & Professional's Route
 
 ### to change the order history status
 
+Professional's Route
+
 - orderhistory/update-status :patch
 
 ```

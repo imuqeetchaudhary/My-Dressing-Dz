@@ -13,3 +13,9 @@ exports.addOrderHistorySchema = yup.object({
 exports.getOrderHistorySchema = yup.object({
     orderHistoryId: yup.string().required()
 })
+
+exports.updateOrderHistoryStatusSchema = yup.object({
+    orderHistoryId: yup.string().required(),
+    status: yup.string().required(),
+    isCompleted: yup.boolean().required(),
+})

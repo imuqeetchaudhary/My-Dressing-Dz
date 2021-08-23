@@ -56,3 +56,21 @@ exports.getSingleOrderHistory = promise(async (req, res) => {
 
     res.status(200).json({ orderhistory })
 })
+
+exports.changeOrderHistoryStatus = promise(async (req, res) => {
+    const body = req.body
+
+    const updateOrderHistory = await OrderHistory.updateOne(
+        { _id: body.orderHistoryId },
+        {
+            $set: {
+                ...body
+            }
+        }
+    )
+
+    const orderhistory = await OrderHistory.findById(body.orderHistoryId)
+    if (!orderhistory) throw new Exceptions.NotFound("No order history found")
+
+    res.status(200).json({ message: "Successfully updated order history status", orderhistory })
+})

@@ -343,3 +343,38 @@ Client's & Professional's Route
     orderHistoryId:
 }
 ```
+
+### to change the order history status
+
+- orderhistory/update-status :patch
+
+```
+{
+    orderHistory:
+    status:
+    isCompleted: Boolean
+}
+
+Status & isCompleted values for Different Buttons:
+
+1) Accept Button:
+
+        status: "accept, in process"
+        isCompleted: false
+
+2) Refuse Button:
+
+        status: "rejected"
+        isCompleted: true
+
+3) Completed Button:
+
+        status: "completed"
+        isCompleted: true
+
+4) Canceled Button:
+
+        status: "canceled"
+        isCompleted: true
+
+```

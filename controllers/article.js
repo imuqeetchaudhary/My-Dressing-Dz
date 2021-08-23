@@ -55,6 +55,19 @@ exports.getAllArticles = promise(async (req, res) => {
     res.status(200).json({ articles })
 })
 
+exports.getReadyToWearArticles = promise(async (req, res) => {
+    const articles = await Article.find(
+        {
+            sectionId: {
+                $in: ["611f59ecb030640364f6e26c", "611f59fbb030640364f6e26e", "611f59ffb030640364f6e270"]
+            }
+        }
+    ).populate("sectionId").populate("categoryId")
+    if (!articles) throw new Exceptions.NotFound("No article found")
+
+    res.status(200).json({ articles })
+})
+
 exports.getSingleArticle = promise(async (req, res) => {
     const body = req.body
     let isLiked;

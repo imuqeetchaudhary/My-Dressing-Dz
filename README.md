@@ -247,6 +247,12 @@ Client's Route
 
 - article/get-all :get
 
+### to get ready to wear articles
+
+Client's Route
+
+- article/get-ready-to-wear :get
+
 ### to get single article
 
 Client's & Professional's Route

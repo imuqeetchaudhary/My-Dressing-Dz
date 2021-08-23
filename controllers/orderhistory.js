@@ -22,7 +22,14 @@ exports.addOrderHistory = promise(async (req, res) => {
 
 exports.getOrderHistoriesForSpecificClient = promise(async (req, res) => {
     const orderhistory = await OrderHistory.find({ clientId: req.user._id })
-    if (!orderhistory) throw new Exceptions.NotFound("No article found")
+    if (!orderhistory) throw new Exceptions.NotFound("No order history found")
+
+    res.status(200).json({ orderhistory })
+})
+
+exports.getOrderHistoriesForSpecificStore = promise(async (req, res) => {
+    const orderhistory = await OrderHistory.find({ storeId: req.user._id })
+    if (!orderhistory) throw new Exceptions.NotFound("No order history found")
 
     res.status(200).json({ orderhistory })
 })

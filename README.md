@@ -313,3 +313,9 @@ Client's Route
 Client's Route
 
 - orderhistory/get-for-specific-client :get
+
+### to get order histories of a specific store
+
+Professional's Route
+
+- orderhistory/get-for-specific-store :get

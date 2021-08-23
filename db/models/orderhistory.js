@@ -41,6 +41,10 @@ const orderhistorySchema = new schema({
     status: {
         type: String,
         default: "pending, processing"
+    },
+    isCompleted: {
+        type: Boolean,
+        default: false
     }
 })
 

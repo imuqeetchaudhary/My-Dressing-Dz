@@ -10,6 +10,7 @@ router
     .get("/get-for-specific-client", authentication, orderhistory.getOrderHistoriesForSpecificClient)
     .get("/get-pending-for-specific-store", authentication, orderhistory.getPendingOrderHistoriesForSpecificStore)
     .get("/get-complete-for-specific-store", authentication, orderhistory.getCompleteOrderHistoriesForSpecificStore)
+    .get("/get-all", authentication, orderhistory.getAllOrderHistories)
     .post("/get-single", authentication, validation(getOrderHistorySchema), orderhistory.getSingleOrderHistory)
 
 module.exports = router

@@ -326,6 +326,12 @@ Professional's Route
 
 - orderhistory/get-complete-for-specific-store :get
 
+### to get all order histories
+
+Super Admin's Route
+
+- orderhistory/get-all :get
+
 ### to get single order history
 
 Client's & Professional's Route

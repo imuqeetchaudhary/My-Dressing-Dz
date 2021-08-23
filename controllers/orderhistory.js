@@ -41,6 +41,13 @@ exports.getCompleteOrderHistoriesForSpecificStore = promise(async (req, res) => 
     res.status(200).json({ orderhistory })
 })
 
+exports.getAllOrderHistories = promise(async (req, res) => {
+    const orderhistory = await OrderHistory.find()
+    if (!orderhistory) throw new Exceptions.NotFound("No order history found")
+
+    res.status(200).json({ orderhistory })
+})
+
 exports.getSingleOrderHistory = promise(async (req, res) => {
     const body = req.body
 

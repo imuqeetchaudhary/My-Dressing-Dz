@@ -380,3 +380,15 @@ Status & isCompleted values for Different Buttons:
         isCompleted: true
 
 ```
+
+### to delete an order history
+
+Client's & Professional's Route
+
+- orderhistory/delete :delete
+
+```
+{
+    orderHistoryId:
+}
+```

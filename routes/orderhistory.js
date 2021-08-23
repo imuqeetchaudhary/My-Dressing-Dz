@@ -13,5 +13,6 @@ router
     .get("/get-all", authentication, orderhistory.getAllOrderHistories)
     .post("/get-single", authentication, validation(getOrderHistorySchema), orderhistory.getSingleOrderHistory)
     .patch("/update-status", authentication, validation(updateOrderHistoryStatusSchema), orderhistory.changeOrderHistoryStatus)
+    .delete("/delete", authentication, validation(getOrderHistorySchema), orderhistory.deleteOrderHistory)
 
 module.exports = router

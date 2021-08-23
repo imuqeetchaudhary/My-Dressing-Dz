@@ -74,3 +74,10 @@ exports.changeOrderHistoryStatus = promise(async (req, res) => {
 
     res.status(200).json({ message: "Successfully updated order history status", orderhistory })
 })
+
+exports.deleteOrderHistory = promise(async (req, res) => {
+    const body = req.body
+
+    const deleteOrderHistory = await OrderHistory.deleteOne({ _id: body.orderHistoryId })
+    res.status(200).json({ message: "Succesfully deleted order history" })
+})

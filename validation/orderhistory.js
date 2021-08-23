@@ -9,3 +9,7 @@ exports.addOrderHistorySchema = yup.object({
     deliveryAddress: yup.string().required(),
     deliveryCity: yup.string().required(),
 })
+
+exports.getOrderHistorySchema = yup.object({
+    orderHistoryId: yup.string().required()
+})

@@ -319,3 +319,15 @@ Client's Route
 Professional's Route
 
 - orderhistory/get-for-specific-store :get
+
+### to get single order history
+
+Client's & Professional's Route
+
+- orderhistory/get-single :post
+
+```
+{
+    orderHistoryId:
+}
+```

@@ -314,11 +314,17 @@ Client's Route
 
 - orderhistory/get-for-specific-client :get
 
-### to get order histories of a specific store
+### to get pending order histories of a specific store
 
 Professional's Route
 
-- orderhistory/get-for-specific-store :get
+- orderhistory/get-pending-for-specific-store :get
+
+### to get completed order histories of a specific store
+
+Professional's Route
+
+- orderhistory/get-complete-for-specific-store :get
 
 ### to get single order history
 

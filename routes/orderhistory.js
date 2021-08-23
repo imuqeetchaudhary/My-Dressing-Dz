@@ -8,7 +8,8 @@ const { addOrderHistorySchema, getOrderHistorySchema } = require("../validation/
 router
     .post("/add", authentication, validation(addOrderHistorySchema), orderhistory.addOrderHistory)
     .get("/get-for-specific-client", authentication, orderhistory.getOrderHistoriesForSpecificClient)
-    .get("/get-for-specific-store", authentication, orderhistory.getOrderHistoriesForSpecificStore)
+    .get("/get-pending-for-specific-store", authentication, orderhistory.getPendingOrderHistoriesForSpecificStore)
+    .get("/get-complete-for-specific-store", authentication, orderhistory.getCompleteOrderHistoriesForSpecificStore)
     .post("/get-single", authentication, validation(getOrderHistorySchema), orderhistory.getSingleOrderHistory)
 
 module.exports = router

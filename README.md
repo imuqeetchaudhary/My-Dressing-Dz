@@ -253,6 +253,12 @@ Client's Route
 
 - article/get-ready-to-wear :get
 
+### to get house only articles
+
+Client's Route
+
+- article/get-house-only :get
+
 ### to get single article
 
 Client's & Professional's Route

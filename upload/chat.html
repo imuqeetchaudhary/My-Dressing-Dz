@@ -33,13 +33,13 @@
         });
 
 
-      // socket.emit(
-      //   "create-room",
-      //   { user: "60ff9c7caeeb47186746b30d" },
-      //   (data) => {
-      //     console.log(data);
-      //   }
-      // );
+      socket.emit(
+        "create-room",
+        { user: "611f5dc8d36b501008bb55ed" },
+        (data) => {
+          console.log(data);
+        }
+      );
 
       // socket.emit("all-rooms", (data) => {
       //   console.log("all rooms", data);

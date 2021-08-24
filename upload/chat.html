@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Application</title>
+  </head>
+
+  <body>
+    <h1>Chat Application Of My Dressing DZ</h1>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io("/", {
+          auth: {
+              token:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZmMGNhMTM0NmNmOTEyNzdkZTdkNTUiLCJuYW1lIjoidXNlcjEiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MjczMjc2ODZ9.ttT111x7v0SgjfnVKyru6cxJ9xBVUI8SPFPK0x5b4x4",
+            },
+        });
+
+        socket.on("msg-from-server", (data) => {
+        console.log(data);
+      });
+
+        socket.on("connect_error", (err) => {
+            console.log("Connection error", err);
+        });
+        
+        socket.on("exception", (err) => {
+            console.log("Error from server", err);
+        });
+
+
+      // socket.emit(
+      //   "create-room",
+      //   { user: "60ff9c7caeeb47186746b30d" },
+      //   (data) => {
+      //     console.log(data);
+      //   }
+      // );
+
+      // socket.emit("all-rooms", (data) => {
+      //   console.log("all rooms", data);
+      // });
+
+      // socket.emit("join-room", "60fa7b24ac584e29e1f44bd9");
+
+      // socket.emit(
+      //   "message-from-client",
+      //   {
+      //     msg: "Hello from client",
+      //     roomId: "60ff9d258c4f681a63296ece",
+      //   },
+      //   (data) => {
+      //     console.log("message", data);
+      //   }
+      // );
+
+      // socket.on("chat-history", (data) => {
+      //   console.log("chat history", data);
+      // });
+
+    //   socket.emit("chat-history", "60ff9d258c4f681a63296ece", (chatHistory) => {
+    //     console.log("getting chat history", chatHistory);
+    //   });
+
+    </script>
+  </body>
+</html>

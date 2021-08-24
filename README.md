@@ -1,5 +1,9 @@
 # My Dressing Dz Rest Api
 
+## Backend Deployment Link
+
+https://my-dressing-dz.herokuapp.com/
+
 ## Routes for Sections
 
 ### To add a new section

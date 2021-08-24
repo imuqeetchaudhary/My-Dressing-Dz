@@ -2,7 +2,6 @@ const { app } = require("./app")
 const socketio = require("socket.io")
 const isAuthMiddleware = require("./middlewares/socketIsAuth");
 const { Room } = require("./db/models/room")
-const room = require("./socket/createRoom")
 
 const PORT = process.env.PORT || 8000
 
@@ -36,6 +35,7 @@ io.on('connection', (socket) => {
         console.log("newly room created")
 
     })
+
 
 })
 

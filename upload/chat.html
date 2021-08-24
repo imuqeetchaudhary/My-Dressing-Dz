@@ -13,29 +13,39 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io("/", {
-          auth: {
-              token:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFmNWJiNzlmM2ExOTFhMWNhYzUwOGQiLCJuYW1lIjoiQWJkdWwgTXVxZWV0IiwiZW1haWwiOiJhYmR1bGlzY29vb2xAZ21haWwuY29tIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTYyOTc5NzA1MX0.4qp_IeaSNi4U7n5Y9VssAAObZ22dJVfd0yIXX7WN-kE",
-              // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFmNWRjOGQzNmI1MDEwMDhiYjU1ZWQiLCJuYW1lIjoiQWJkdWwgTXVxZWV0IEFyc2hhZCIsImVtYWlsIjoiYWJkdWxpc2Nvb29sQGdtYWlsLmNvbSIsInJvbGUiOiJwcm9mZXNzaW9uYWwiLCJpYXQiOjE2Mjk3OTcwOTF9.ArCiVZMUOJxd6wSnqEALk-ILj31fPSOO1CDRw7Ah9yA"
-            },
-        });
+        auth: {
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFmNWJiNzlmM2ExOTFhMWNhYzUwOGQiLCJuYW1lIjoiQWJkdWwgTXVxZWV0IiwiZW1haWwiOiJhYmR1bGlzY29vb2xAZ21haWwuY29tIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTYyOTc5NzA1MX0.4qp_IeaSNi4U7n5Y9VssAAObZ22dJVfd0yIXX7WN-kE",
+          // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFmNWRjOGQzNmI1MDEwMDhiYjU1ZWQiLCJuYW1lIjoiQWJkdWwgTXVxZWV0IEFyc2hhZCIsImVtYWlsIjoiYWJkdWxpc2Nvb29sQGdtYWlsLmNvbSIsInJvbGUiOiJwcm9mZXNzaW9uYWwiLCJpYXQiOjE2Mjk3OTcwOTF9.ArCiVZMUOJxd6wSnqEALk-ILj31fPSOO1CDRw7Ah9yA"
+        },
+      });
 
-        socket.on("msg-from-server", (data) => {
+      socket.on("msg-from-server", (data) => {
         console.log(data);
       });
 
-        socket.on("connect_error", (err) => {
-            console.log("Connection error", err);
-        });
-        
-        socket.on("exception", (err) => {
-            console.log("Error from server", err);
-        });
+      socket.on("connect_error", (err) => {
+        console.log("Connection error", err);
+      });
 
+      socket.on("exception", (err) => {
+        console.log("Error from server", err);
+      });
+
+      // socket.emit(
+      //   "create-room",
+      //   { userId: "611f5dc8d36b501008bb55ed" },
+      //   (data) => {
+      //     console.log(data);
+      //   }
+      // );
 
       socket.emit(
-        "create-room",
-        { user: "611f5dc8d36b501008bb55ed" },
+        "msg-from-client",
+        {
+          roomId: "6124dee82903b30aa834b249",
+          message: "Message from client"
+        },
         (data) => {
           console.log(data);
         }
@@ -62,10 +72,9 @@
       //   console.log("chat history", data);
       // });
 
-    //   socket.emit("chat-history", "60ff9d258c4f681a63296ece", (chatHistory) => {
-    //     console.log("getting chat history", chatHistory);
-    //   });
-
+      //   socket.emit("chat-history", "60ff9d258c4f681a63296ece", (chatHistory) => {
+      //     console.log("getting chat history", chatHistory);
+      //   });
     </script>
   </body>
 </html>

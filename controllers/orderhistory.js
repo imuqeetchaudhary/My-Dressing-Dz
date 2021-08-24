@@ -22,6 +22,7 @@ exports.addOrderHistory = promise(async (req, res) => {
 
 exports.getOrderHistoriesForSpecificClient = promise(async (req, res) => {
     const orderhistory = await OrderHistory.find({ clientId: req.user._id })
+        .populate("articleId").populate("storeId").populate("clientId")
     if (!orderhistory) throw new Exceptions.NotFound("No order history found")
 
     res.status(200).json({ orderhistory })
@@ -29,6 +30,7 @@ exports.getOrderHistoriesForSpecificClient = promise(async (req, res) => {
 
 exports.getPendingOrderHistoriesForSpecificStore = promise(async (req, res) => {
     const orderhistory = await OrderHistory.find({ storeId: req.user._id, isCompleted: false })
+        .populate("articleId").populate("storeId").populate("clientId")
     if (!orderhistory) throw new Exceptions.NotFound("No order history found")
 
     res.status(200).json({ orderhistory })
@@ -36,6 +38,7 @@ exports.getPendingOrderHistoriesForSpecificStore = promise(async (req, res) => {
 
 exports.getCompleteOrderHistoriesForSpecificStore = promise(async (req, res) => {
     const orderhistory = await OrderHistory.find({ storeId: req.user._id, isCompleted: true })
+        .populate("articleId").populate("storeId").populate("clientId")
     if (!orderhistory) throw new Exceptions.NotFound("No order history found")
 
     res.status(200).json({ orderhistory })
@@ -43,6 +46,7 @@ exports.getCompleteOrderHistoriesForSpecificStore = promise(async (req, res) => 
 
 exports.getAllOrderHistories = promise(async (req, res) => {
     const orderhistory = await OrderHistory.find()
+        .populate("articleId").populate("storeId").populate("clientId")
     if (!orderhistory) throw new Exceptions.NotFound("No order history found")
 
     res.status(200).json({ orderhistory })
@@ -52,6 +56,7 @@ exports.getSingleOrderHistory = promise(async (req, res) => {
     const body = req.body
 
     const orderhistory = await OrderHistory.findById(body.orderHistoryId)
+        .populate("articleId").populate("storeId").populate("clientId")
     if (!orderhistory) throw new Exceptions.NotFound("No order history found")
 
     res.status(200).json({ orderhistory })

@@ -20,7 +20,7 @@
         },
       });
 
-      socket.on("msg-from-server", (data) => {
+      socket.on("hello-from-server", (data) => {
         console.log(data);
       });
 
@@ -40,41 +40,34 @@
       //   }
       // );
 
-      socket.emit(
-        "msg-from-client",
-        {
-          roomId: "6124dee82903b30aa834b249",
-          message: "Message from client"
-        },
-        (data) => {
-          console.log(data);
-        }
-      );
-
       // socket.emit("all-rooms", (data) => {
-      //   console.log("all rooms", data);
+      //   console.log(data);
       // });
 
-      // socket.emit("join-room", "60fa7b24ac584e29e1f44bd9");
-
       // socket.emit(
-      //   "message-from-client",
+      //   "chat-history",
       //   {
-      //     msg: "Hello from client",
-      //     roomId: "60ff9d258c4f681a63296ece",
+      //     roomId: "6124dee82903b30aa834b249",
       //   },
       //   (data) => {
-      //     console.log("message", data);
+      //     console.log(data);
       //   }
       // );
 
-      // socket.on("chat-history", (data) => {
-      //   console.log("chat history", data);
-      // });
+      // socket.emit(
+      //   "msg-from-client",
+      //   {
+      //     roomId: "6124dee82903b30aa834b249",
+      //     message: "Message from client",
+      //   },
+      //   (data) => {
+      //     console.log(data);
+      //   }
+      // );
 
-      //   socket.emit("chat-history", "60ff9d258c4f681a63296ece", (chatHistory) => {
-      //     console.log("getting chat history", chatHistory);
-      //   });
+      // socket.on("msg-from-server", (data) => {
+      //   console.log("Message received:", data);
+      // });
     </script>
   </body>
 </html>

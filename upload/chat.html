@@ -29,8 +29,12 @@
       });
 
       socket.on("exception", (err) => {
-        console.log("Error from server", err);
+        console.log("Error from server:", err);
       });
+
+      // socket.on("join-room-error", (err) => {
+      //   console.log("Join Room Error:", err);
+      // });
 
       // socket.emit(
       //   "create-room",
@@ -47,7 +51,7 @@
       // socket.emit(
       //   "chat-history",
       //   {
-      //     roomId: "6124dee82903b30aa834b249",
+      //     roomId: "61261edc45fc2c04b0744a1e",
       //   },
       //   (data) => {
       //     console.log(data);
@@ -57,7 +61,7 @@
       // socket.emit(
       //   "msg-from-client",
       //   {
-      //     roomId: "6124dee82903b30aa834b249",
+      //     roomId: "61261edc45fc2c04b0744a1e",
       //     message: "Message from client",
       //   },
       //   (data) => {
@@ -66,8 +70,9 @@
       // );
 
       // socket.on("msg-from-server", (data) => {
-      //   console.log("Message received:", data);
+      //   console.log("Message:", data);
       // });
+
     </script>
   </body>
 </html>

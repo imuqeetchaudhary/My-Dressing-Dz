@@ -20,20 +20,23 @@ io.on('connection', (socket) => {
     console.log('A user connected');
     socket.emit("hello-from-server", "Hello from server")
 
-    socket.on("create-room", async (data) => {
+    socket.on("create-room", async (data, cb) => {
 
+        if (!socket.request.user._id) return socket.emit("exception", "Token required!");
         const userId = socket.request.user._id
+
+        if (!data.userId) return socket.emit("exception", "userId is required");
         const opposedUserId = data.userId
 
         const roomExists = await Room.findOne({ userId, opposedUserId })
-        if (roomExists) return console.log("Room already exists")
+        if (roomExists) return socket.emit("exception", "Room already exists");
 
         const newRoom = new Room({
             userId: userId,
             opposedUserId: opposedUserId,
         })
         newRoom.save()
-        console.log("newly room created")
+        cb("Newly room created")
 
     })
 
@@ -42,7 +45,7 @@ io.on('connection', (socket) => {
         // console.log("UserId:", userId)
 
         const rooms = await Room.find({ userId })
-        if (!rooms) cb("No rooms found")
+        if (!rooms) return socket.emit("exception", "Room not found");
 
         const allRooms = { allROoms: rooms }
         // console.log("All Rooms:", allRooms)
@@ -51,11 +54,13 @@ io.on('connection', (socket) => {
     })
 
     socket.on("chat-history", async (data, cb) => {
+
+        if (!data.roomId) return socket.emit("exception", "roomId is required");
         const roomId = data.roomId
         // console.log("RoomId:", roomId)
 
         const room = await Room.findById(roomId)
-        if (!room) return console.log("Room not found")
+        if (!room) return socket.emit("exception", "Room not found");
 
         // console.log("UserId:", room.userId)
         const user = await User.findById(room.userId).select("userName email")
@@ -78,14 +83,16 @@ io.on('connection', (socket) => {
 
     socket.on("msg-from-client", async (data) => {
 
+        if (!data.roomId) return socket.emit("exception", "roomId is required");
         const roomId = data.roomId
         // console.log("RoomId:", roomId)
 
+        if (!data.message) return socket.emit("exception", "message is required");
         const message = data.message
         // console.log("Message:", message)
 
         const room = await Room.findById(roomId)
-        if (!room) return console.log("Room not found")
+        if (!room) return socket.emit("exception", "Room not found")
 
         const userId = socket.request.user._id
         // console.log("UserId:", userId)
@@ -94,7 +101,7 @@ io.on('connection', (socket) => {
         // console.log("OpposedUserId:", opposedUserId)
 
         const opposedUser = await User.findById(opposedUserId)
-        if (!opposedUser) return console.log("opposedUser not found")
+        if (!opposedUser) return socket.emit("exception", "opposedUser not found")
 
         await Room.updateOne(
             { _id: roomId },
@@ -108,12 +115,13 @@ io.on('connection', (socket) => {
             }
         )
 
-        socket.emit("msg-from-server", {
-            userId: userId,
-            message: message,
-        }, (data) => {
-            console.log(data)
-        })
+        const existingRoom = Array.from(socket.rooms)[1];
+
+        socket.leave(existingRoom)
+
+        socket.join(roomId)
+
+        io.to(roomId).emit("msg-from-server", message)
 
     })
 
